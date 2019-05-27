@@ -1,1 +1,70 @@
-hello world
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		html, body {
+		  height: 100%;
+		  margin: 0;
+		  width: 100%;
+		}
+		body {
+		  background: #000;
+		  color: #88ff00;
+		  font-family: Inconsolata,monospace;
+		  font-size: 14px;
+		}
+
+		#typedtext {
+		  padding-top: 20px;
+		  margin-left: auto;
+		  margin-right: auto;
+		  width: 200px;
+		}
+	</style>
+</head>
+<body>
+	  <div id="ngentod"></div>
+	  
+<script type="text/javascript">
+var aText = new Array(
+"hi there, i'am Rizky",
+"a web programmer and security research",
+"written in PHP and nodeJS",
+"based in surabaya, indonesia",
+"can convert gudey priz",
+"into pretty code"
+);
+var iSpeed = 50; 
+var iIndex = 0; 
+var iArrLength = aText[0].length; 
+var iScrollAt = 20; 
+ 
+var iTextPos = 0; 
+var sContents = ''; 
+var iRow; 
+ 
+function ngentod()
+{
+ sContents =  ' ';
+ iRow = Math.max(0, iIndex-iScrollAt);
+ var destination = document.getElementById("ngentod");
+ 
+ while ( iRow < iIndex ) {
+  sContents += aText[iRow++] + '<br />';
+ }
+ destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+ if ( iTextPos++ == iArrLength ) {
+  iTextPos = 0;
+  iIndex++;
+  if ( iIndex != aText.length ) {
+   iArrLength = aText[iIndex].length;
+   setTimeout("ngentod()", 500);
+  }
+ } else {
+  setTimeout("ngentod()", iSpeed);
+ }
+}
+</script>
+</body>
+</html>
